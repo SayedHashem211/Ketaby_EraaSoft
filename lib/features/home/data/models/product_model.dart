@@ -30,13 +30,14 @@ class ProductModel {
       description: json['description'],
       price: json['price'],
       discount: json['discount'],
-      priceAfterDiscount: json['price_after_discount'],
+      priceAfterDiscount: json['price_after_discount'] == null ? 0.0 : json['price_after_discount'].toDouble(),
       stock: json['stock'],
       bestSeller: json['best_seller'],
       image: json['image'],
       category: json['category'],
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {

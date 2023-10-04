@@ -1,3 +1,4 @@
+import 'package:e_commerce_eraasoft/features/home/presentation/views/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/models/product_model.dart';
@@ -16,7 +17,11 @@ class ItemComponent extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: MaterialButton(
-            onPressed: (){},
+            onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return ProductDetailsScreen(productId: model.id, name: model.name, category: model.category, description: model.description, price: model.price, priceAfterDiscount: model.priceAfterDiscount, imageUrl: model.image);
+                }));
+            },
             padding: EdgeInsets.zero,
             child: Column(
               children: [
@@ -46,7 +51,7 @@ class ItemComponent extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: Colors.grey
                     )),
-                Text(model.price, maxLines: 1,
+                Text("${model.price}\$", maxLines: 1,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -56,7 +61,7 @@ class ItemComponent extends StatelessWidget {
                       decoration: TextDecoration.lineThrough,
                     )),
                 SizedBox(height: MediaQuery.of(context).size.height*0.005),
-                Text(model.priceAfterDiscount.toString(), maxLines: 1,
+                Text("${model.priceAfterDiscount.toString()}\$", maxLines: 1,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(

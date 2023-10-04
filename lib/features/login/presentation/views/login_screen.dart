@@ -68,6 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
           HomeCubit.get(context).getBestSellerData();
           HomeCubit.get(context).getNewArrivalData();
           HomeCubit.get(context).getCategories();
+          HomeCubit.get(context).getProfileData();
+
         }
         if (state is LoginErrorState) {
           MotionToast.error(

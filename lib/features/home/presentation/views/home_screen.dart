@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 1.h,),
                 Text(
-                  "What are you reading today?",
+                  "What are you doing today?",
                   style: GoogleFonts.roboto(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                Container(
                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                 height: MediaQuery.of(context).size.height*0.25,
+                 height: MediaQuery.of(context).size.height*0.31,
                  width: double.infinity,
                  decoration: const BoxDecoration(
                    color: Color(0xFF05A4A6),
@@ -150,18 +150,15 @@ class _HomeScreenState extends State<HomeScreen> {
                    children: [
                       SizedBox(height: 30.h,),
                      SizedBox(height: 8.h,),
-                     const CircleAvatar(
-                       backgroundImage: AssetImage("assets/images/bg.png"),
-                       radius: 30,
-                     ),
+                     Image.network(HomeCubit.get(context).profileModel?.data?.image ?? "" , height: 110,width: 70),
                      SizedBox(height: 5.h,),
-                     const Text("user name", style: TextStyle(
+                     Text(HomeCubit.get(context).profileModel?.data?.name ?? "", style: const TextStyle(
                        fontSize: 21,
                        color: Colors.white,
                        fontWeight: FontWeight.w700
                      ),),
                      SizedBox(height: 5.h,),
-                     const Text("sekahashem@gmail.com", style: TextStyle(
+                     Text(HomeCubit.get(context).profileModel?.data?.email ?? "", style: const TextStyle(
                          fontSize: 16,
                          color: Colors.white,
                          fontWeight: FontWeight.w300

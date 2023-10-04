@@ -171,7 +171,10 @@ class _HomeTabState extends State<HomeTab> {
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
                                   itemBuilder: (context,
-                                      index) => CategoryComponent (model:cubit.categories[index] ,),
+                                      index) => CategoryComponent (
+                                    categoriesModel:cubit.categories[index] ,
+                                  productModel: cubit.allProducts[index],
+                                  ),
                                   separatorBuilder:
                                       (context, index) =>
                                       SizedBox(

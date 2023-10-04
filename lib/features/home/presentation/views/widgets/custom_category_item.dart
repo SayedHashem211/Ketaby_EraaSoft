@@ -1,13 +1,19 @@
+import 'package:e_commerce_eraasoft/features/home/data/models/product_model.dart';
+import 'package:e_commerce_eraasoft/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/models/category_model.dart';
+import '../product_details_screen.dart';
 
 
 class CategoryComponent extends StatelessWidget {
-  final CategoryModel model;
+  final CategoryModel categoriesModel;
+  final ProductModel productModel;
   const CategoryComponent({super.key,
-    required this.model});
+    required this.categoriesModel,
+    required this.productModel
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,20 @@ class CategoryComponent extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: MaterialButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return ProductDetailsScreen(
+                  productId: productModel.id,
+                  name: productModel.name,
+                  category: productModel.category,
+                  description: productModel.description,
+                  price: productModel.price,
+                  priceAfterDiscount: productModel.priceAfterDiscount,
+                  imageUrl: productModel.image,
+                );
+              }));
+              HomeCubit.get(context).showCategoryDetails(categoriesModel.id);
+            },
             padding: EdgeInsets.zero,
             child: Stack(
               alignment: Alignment.center,
@@ -32,7 +51,7 @@ class CategoryComponent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     )
                 ),
-                Text(model.name, maxLines: 2,
+                Text(categoriesModel.name, maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
